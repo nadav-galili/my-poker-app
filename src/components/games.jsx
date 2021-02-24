@@ -5,31 +5,32 @@ import DayPicker from "./common/date-picker";
 class Games extends Component {
   state = {
     players: [
-      { id: 1, name: "Bibs" },
-      { id: 2, name: "Vasili" },
-      { id: 3, name: "Rami" },
-      { id: 4, name: "Asad" },
+      { id: 1, name: "Bibs", selected: false },
+      { id: 2, name: "Vasili", selected: false },
+      { id: 3, name: "Rami", selected: false },
+      { id: 4, name: "Asad", selected: false },
     ],
   };
 
+  selectPlayer = (playerId) => {
+    let players = this.state;
+    players.map((p) => {
+      if (playerId === p.id) p.selected = !p.selected;
+      return p;
+    });
+
+    this.setState({ players });
+  };
   render() {
     const { players } = this.state;
 
     return (
       <div>
+        <Players
+          players={players}
+          addPlayer={() => this.selectPlayer(players.id)}
+        />
         <DayPicker />
-        <Players players={players} />
-
-        {/* <table border="2">
-          <thead>
-            <tr>
-              <td>3</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>ll</tr>
-          </tbody>
-        </table> */}
       </div>
     );
   }
