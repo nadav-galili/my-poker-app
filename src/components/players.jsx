@@ -1,15 +1,17 @@
 import React from "react";
-import Player from "./player";
 
-const Players = (props) => {
-  const players = props.players;
-  console.log(props);
+const Players = ({ player, selectPlayer }) => {
+  console.log(player);
   return (
-    <div className="container">
-      <div className="row">
-        {players.map((player) => (
-          <Player key={player.id} player={player} addPlayer={props.addPlayer} />
-        ))}
+    <div className="col-3">
+      <div className="card">
+        <div className="card-body">
+          <div className="card-title">{player.name}</div>
+          <div className="card-title">{player.selected ? "true" : "false"}</div>
+          <button type="button" onClick={selectPlayer}>
+            Add Player
+          </button>
+        </div>
       </div>
     </div>
   );
