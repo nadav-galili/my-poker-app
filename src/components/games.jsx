@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Players from "./players";
-import DayPicker from "./common/date-picker";
+// import DayPicker from "./common/date-picker";
 
 class Games extends Component {
   state = {
@@ -12,25 +12,35 @@ class Games extends Component {
     ],
   };
 
-  selectPlayer = (playerId) => {
-    let players = this.state;
-    players.map((p) => {
-      if (playerId === p.id) p.selected = !p.selected;
-      return p;
-    });
-
+  selectPlayer(playerId) {
+    let { players } = this.state;
+    players[playerId - 1].selected = true;
+    console.log(players[playerId - 1]);
     this.setState({ players });
-  };
+  }
+
   render() {
     const { players } = this.state;
 
     return (
-      <div>
-        <Players
-          players={players}
-          addPlayer={() => this.selectPlayer(players.id)}
-        />
-        <DayPicker />
+      // <Players players={players}/>
+      <div className="col-md-6 col-lg-4 col-xl-3 mt-3">
+        {players.map((player) => (
+          <div className="card" key={player.id}>
+            <div className="card-body">
+              <h5 className="card-title">{player.id}</h5>
+              <p className="card-text">{player.name}</p>
+              <p className="card-text">{player.selected ? "true" : "false"}</p>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => this.selectPlayer(player.id)}
+              >
+                Add player
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     );
   }
