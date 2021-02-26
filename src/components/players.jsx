@@ -1,7 +1,6 @@
 import React from "react";
 
 const Players = ({ player, selectPlayer }) => {
-  console.log(player);
   return (
     <div className="col-3">
       <div className="card">

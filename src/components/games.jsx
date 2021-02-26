@@ -15,8 +15,7 @@ class Games extends Component {
 
   selectPlayer(playerId) {
     const { players } = this.state;
-
-    players[playerId - 1].selected = true;
+    players[playerId - 1].selected = !players[playerId - 1].selected;
     this.setState({ players });
   }
 
@@ -36,6 +35,27 @@ class Games extends Component {
             />
           ))}
         </div>
+
+        <table border="3">
+          <thead>
+            <tr>
+              <td>id</td>
+              <td>name</td>
+              <td>selected</td>
+              <td>button</td>
+            </tr>
+          </thead>
+          <tbody>
+            {players.map((player) => (
+              <tr key={player.id}>
+                <td>{player.selected && player.id}</td>
+                <td>{player.selected && player.name}</td>
+                <td>{player.selected && "In the game"}</td>
+                <td>{player.selected && <button>add 50</button>}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   }
