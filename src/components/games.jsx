@@ -2,15 +2,20 @@ import React, { Component } from "react";
 // import Player from "./player";
 import Players from "./players";
 // import DayPicker from "./common/date-picker";
+import http from "../services/httpService";
+import { apiUrl } from "../config/config.json";
+import axios from "axios";
 
 class Games extends Component {
   state = {
-    players: [
-      { id: 1, name: "Bibs", selected: false, cash: 0 },
-      { id: 2, name: "Vasili", selected: false, cash: 0 },
-      { id: 3, name: "Rami", selected: false, cash: 0 },
-      { id: 4, name: "Asad", selected: false, cash: 0 },
-    ],
+    players: [],
+  };
+
+  getPlayers = async () => {
+    axios.get(`${apiUrl}/players`).then((response) => {
+      console.log(response.data);
+      this.setState({ players: response.data });
+    });
   };
 
   selectPlayer(playerId) {
@@ -22,6 +27,7 @@ class Games extends Component {
   addCashing = (playerId) => {
     let { players } = this.state;
     players[playerId - 1].cash += 50;
+    console.log(players);
     this.setState({ players });
   };
 
@@ -30,6 +36,9 @@ class Games extends Component {
 
     return (
       <div className="container">
+        <button type="button" onClick={this.getPlayers}>
+          Get players
+        </button>
         <div className="row">
           {players.map((player) => (
             <Players
@@ -56,11 +65,14 @@ class Games extends Component {
             {players.map((player) => (
               <tr key={player.id}>
                 <td>{player.selected && player.id}</td>
-                <td>{player.selected && player.name}</td>
+                <td>{player.selected && player.player_name}</td>
                 <td>{player.selected && "In the game"}</td>
                 <td>
                   {player.selected && (
-                    <button onClick={() => this.addCashing(player.id)}>
+                    <button
+                      onClick={() => this.addCashing(player.id)}
+                      className="btn btn-secondary"
+                    >
                       add 50
                     </button>
                   )}

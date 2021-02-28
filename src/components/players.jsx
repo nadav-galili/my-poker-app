@@ -5,10 +5,14 @@ const Players = ({ player, selectPlayer }) => {
     <div className="col-3">
       <div className="card">
         <div className="card-body">
-          <div className="card-title">{player.name}</div>
+          <div className="card-title">{player.player_name}</div>
           <div className="card-title">{player.cash}</div>
           <div className="card-title">{player.selected ? "true" : "false"}</div>
-          <button type="button" onClick={selectPlayer}>
+          <button
+            type="button"
+            onClick={selectPlayer}
+            className="btn btn-primary"
+          >
             Add Player
           </button>
         </div>
