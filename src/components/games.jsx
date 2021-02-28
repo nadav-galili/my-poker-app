@@ -6,10 +6,10 @@ import Players from "./players";
 class Games extends Component {
   state = {
     players: [
-      { id: 1, name: "Bibs", selected: false },
-      { id: 2, name: "Vasili", selected: false },
-      { id: 3, name: "Rami", selected: false },
-      { id: 4, name: "Asad", selected: false },
+      { id: 1, name: "Bibs", selected: false, cash: 0 },
+      { id: 2, name: "Vasili", selected: false, cash: 0 },
+      { id: 3, name: "Rami", selected: false, cash: 0 },
+      { id: 4, name: "Asad", selected: false, cash: 0 },
     ],
   };
 
@@ -18,6 +18,12 @@ class Games extends Component {
     players[playerId - 1].selected = !players[playerId - 1].selected;
     this.setState({ players });
   }
+
+  addCashing = (playerId) => {
+    let { players } = this.state;
+    players[playerId - 1].cash += 50;
+    this.setState({ players });
+  };
 
   render() {
     const { players } = this.state;
@@ -36,13 +42,14 @@ class Games extends Component {
           ))}
         </div>
 
-        <table border="3">
+        <table className="table">
           <thead>
             <tr>
               <td>id</td>
               <td>name</td>
               <td>selected</td>
               <td>button</td>
+              <td>total</td>
             </tr>
           </thead>
           <tbody>
@@ -51,7 +58,14 @@ class Games extends Component {
                 <td>{player.selected && player.id}</td>
                 <td>{player.selected && player.name}</td>
                 <td>{player.selected && "In the game"}</td>
-                <td>{player.selected && <button>add 50</button>}</td>
+                <td>
+                  {player.selected && (
+                    <button onClick={() => this.addCashing(player.id)}>
+                      add 50
+                    </button>
+                  )}
+                </td>
+                <td>{player.selected && player.cash}</td>
               </tr>
             ))}
           </tbody>

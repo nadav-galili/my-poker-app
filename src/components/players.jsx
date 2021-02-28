@@ -6,6 +6,7 @@ const Players = ({ player, selectPlayer }) => {
       <div className="card">
         <div className="card-body">
           <div className="card-title">{player.name}</div>
+          <div className="card-title">{player.cash}</div>
           <div className="card-title">{player.selected ? "true" : "false"}</div>
           <button type="button" onClick={selectPlayer}>
             Add Player
