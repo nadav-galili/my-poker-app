@@ -6,6 +6,7 @@ import http from "../services/httpService";
 import { apiUrl } from "../config/config.json";
 // import axios from "axios";
 import playersService from "../services/playersService";
+import gameService from "../services/gameService ";
 
 class Games extends Component {
   state = {
@@ -14,7 +15,7 @@ class Games extends Component {
 
   async componentDidMount() {
     const { data } = await playersService.getPlayers();
-
+    console.log(data);
     this.setState({ players: data });
   }
 
@@ -26,7 +27,7 @@ class Games extends Component {
 
   addCashing = (playerId) => {
     let { players } = this.state;
-    players[playerId - 1].cash += 50;
+    players[playerId - 1].cashing += 50;
     this.setState({ players });
   };
 
@@ -36,6 +37,12 @@ class Games extends Component {
     players[playerId - 1].cashInHand = event.target.value;
     console.log(players);
     this.setState({ players });
+  };
+
+  updateGame = () => {
+    const players = this.state.players;
+    console.log(players[2]);
+    gameService.postGames(players[4]);
   };
 
   render() {
@@ -54,7 +61,9 @@ class Games extends Component {
             />
           ))}
         </div>
-
+        <button type="button" onClick={this.updateGame}>
+          update
+        </button>
         <table className="table">
           <thead>
             <tr>
@@ -91,7 +100,7 @@ class Games extends Component {
 
                 <td>
                   <b>
-                    <i>{player.cashInHand - player.cash}</i>
+                    <i>{player.cashInHand - player.cashing}</i>
                   </b>
                 </td>
               </tr>
@@ -102,11 +111,11 @@ class Games extends Component {
               </td>
               <td></td>
               <td></td>
-              <td></td>
+
               <td>
                 <b>
                   {players.reduce((prev, cur) => {
-                    return prev + cur.cash;
+                    return prev + cur.cashing;
                   }, 0)}
                 </b>
               </td>
