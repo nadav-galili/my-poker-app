@@ -7,6 +7,7 @@ import { apiUrl } from "../config/config.json";
 // import axios from "axios";
 import playersService from "../services/playersService";
 import gameService from "../services/gameService ";
+import { LinearProgress } from "@material-ui/core";
 
 class Games extends Component {
   state = {
@@ -15,7 +16,7 @@ class Games extends Component {
 
   async componentDidMount() {
     const { data } = await playersService.getPlayers();
-    console.log(data);
+    // console.log(data);
     this.setState({ players: data });
   }
 
@@ -40,9 +41,29 @@ class Games extends Component {
   };
 
   updateGame = () => {
-    const players = this.state.players;
-    console.log(players[2]);
-    gameService.postGames(players[4]);
+    let players = this.state.players;
+    players = players.filter((player) => player.selected);
+
+    // players.sort(function (a, b) {
+    //   return a.profit - b.profit;
+    // });
+
+    // let game_rank = 1;
+    // for (let i = 0; i < players.length; i++) {
+    //   if (i > 0 && players[i].profit < players[i - 1].profit) {
+    //     game_rank++;
+    //   }
+    //   players[i].game_rank = game_rank;
+    // }
+
+    players.map((player) => {
+      player.profit = player.cashInHand - player.cashing;
+      player.num_of_cashing = player.cashing / 50;
+
+      this.setState({ players });
+
+      return gameService.postGames(player);
+    });
   };
 
   render() {
@@ -90,7 +111,7 @@ class Games extends Component {
                     </button>
                   )}
                 </td>
-                <td>{player.selected && player.cash}</td>
+                <td>{player.selected && player.cashing}</td>
                 <td>
                   <input
                     type="number"
