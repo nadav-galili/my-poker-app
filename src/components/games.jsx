@@ -15,7 +15,7 @@ class Games extends Component {
 
   async componentDidMount() {
     const { data } = await playersService.getPlayers();
-    // console.log(data);
+
     this.setState({ players: data });
   }
 
@@ -38,19 +38,21 @@ class Games extends Component {
     this.setState({ players });
   };
 
-  updateGame = () => {
+  updateGame = async () => {
     let players = this.state.players;
 
-    // players = players.filter((player) => player.selected);
+    players = players.filter((player) => player.selected);
 
     players.map((player) => {
       player.profit = player.cashInHand - player.cashing;
       player.num_of_cashing = player.cashing / 50;
 
       this.setState({ players });
-      console.log(this.state);
+
       return gameService.postGames(player);
     });
+    // const { data } = await gameService.getLastGame();
+    // console.log(data);
   };
 
   render() {
