@@ -10,7 +10,7 @@ export function postGames(game) {
 }
 
 export function getLastGame(game) {
-  return http.get(`${apiUrl}/games`, game);
+  return http.get(`${apiUrl}/games/lastgame`, game);
 }
 
 export default {

@@ -1,45 +1,61 @@
-import MaterialTable from "material-table";
-import React from "react";
+import React, { Component } from "react";
 import { apiUrl } from "../config/config.json";
+import gameService from "../services/gameService ";
 
-const LastGame = () => {
-  return (
-    <div className="container">
-      <MaterialTable
-        title="last game"
-        columns={[
-          { title: "rank", field: "rank" },
-          {
-            title: "avatar",
-            field: "image",
-            render: (rowData) => (
-              <img
-                style={{ height: 36, borderRadius: "50%" }}
-                src={rowData.image}
-                alt={rowData.name}
-              />
-            ),
-          },
-          { title: "name", field: "name" },
-          { title: "profit", field: "profit" },
-          { title: "pritot", field: "num_of_pritot" },
-        ]}
-        data={(query) =>
-          new Promise((resolve, reject) => {
-            let url = `${apiUrl}/games/lastgame`;
-            fetch(url)
-              .then((response) => response.json())
-              .then((result) => {
-                resolve({
-                  data: result,
-                  page: 1,
-                  totalCount: 10,
-                });
-              });
-          })
-        }
-      />
-    </div>
-  );
-};
+class LastGame extends Component {
+  state = {
+    players: [],
+  };
+  async componentDidMount() {
+    const { data } = await gameService.getLastGame();
+
+    this.setState({ players: data });
+  }
+
+  render() {
+    const { players } = this.state;
+
+    return (
+      <div className="container ">
+        <h2>Last Game</h2>
+        <h2>
+          {new Date().getDate() +
+            "/" +
+            (new Date().getMonth() + 1) +
+            "/" +
+            new Date().getFullYear()}
+        </h2>
+        <table className="table">
+          <thead>
+            <tr>
+              <td>Game Rank</td>
+              <td>Name</td>
+              <td>img</td>
+              <td>Profit</td>
+              <td>Pritot Number</td>
+            </tr>
+          </thead>
+          <tbody>
+            {players.map((player) => (
+              <tr key={player.name}>
+                <td>{player.rank}</td>
+                <td>{player.name}</td>
+                <td>
+                  <img
+                    src={process.env.PUBLIC_URL + `images/${player.name}.jpg`}
+                    alt=""
+                    className="lastgame"
+                  />
+                </td>
+                <td>{player.profit}</td>
+                <td>{player.num_of_pritot}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+}
+
 export default LastGame;

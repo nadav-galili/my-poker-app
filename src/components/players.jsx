@@ -2,14 +2,16 @@ import React from "react";
 
 const Players = ({ player, selectPlayer }) => {
   return (
-    <div className=" col-md-6 col-lg-4 col-xl-3">
-      <div className="card">
-        <img src={player.image} className="card-img-top" alt="..." />
+    <div className="  col-sm-6 col-md-6  col-lg-4 col-xl-2 ">
+      <div className="card ">
+        <img
+          src={process.env.PUBLIC_URL + `images/${player.name}.jpg`}
+          className="card-img-top"
+          alt="..."
+        />
         <div className="card-body">
-          <div className="card-title">{player.name}</div>
-          {/* <div className="card-title">{player.cash}</div> */}
+          <div className="card-title text-center">{player.name}</div>
 
-          {/* <div className="card-title">{player.cashInHand}</div> */}
           <button
             type="button"
             onClick={selectPlayer}

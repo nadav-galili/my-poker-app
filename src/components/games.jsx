@@ -51,8 +51,7 @@ class Games extends Component {
 
       return gameService.postGames(player);
     });
-    // const { data } = await gameService.getLastGame();
-    // console.log(data);
+    await this.props.history.replace("/lastgame");
   };
 
   render() {

@@ -37,23 +37,3 @@ class PlayerTable extends Component {
 }
 
 export default PlayerTable;
-// const PlayerTable = ({ player, addCashing, onInputChange }) => {
-//   return (
-//     <tr key={player.id}>
-//       <td>{player.id}</td>
-//       <td>{player.name}</td>
-
-//       <td>
-//         <button type="button" onClick={() => addCashing(player.id)}>
-//           add cashing
-//         </button>
-//       </td>
-//       <td>{player.cashing}</td>
-//       <td>
-//         <input type="number" onChange={(e) => e} />
-//       </td>
-//     </tr>
-//   );
-// };
-
-// export default PlayerTable;

@@ -1,6 +1,19 @@
 .card-img-top {
-  border: solid black 2px;
   width: 6em;
   height: 10em;
   /* border-radius: 50%; */
+}
+
+.lastgame {
+  width: 5em;
+  height: 4em;
+  border-radius: 50%;
+  border: 3px solid black;
+}
+
+.table.myTable tr {
+  border: 2px solid black;
+  font-size: 1em;
+  font-family: "Rubik", sans-serif;
+  font-weight: 700;
 }
