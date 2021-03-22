@@ -5,26 +5,21 @@ import gameService from "../services/gameService ";
 class LastGame extends Component {
   state = {
     players: [],
+    date: "",
   };
   async componentDidMount() {
     const { data } = await gameService.getLastGame();
-
     this.setState({ players: data });
+    this.setState({ date: data[0].date });
   }
 
   render() {
     const { players } = this.state;
-
+    const { date } = this.state;
     return (
       <div className="container ">
         <h2>Last Game</h2>
-        <h2>
-          {new Date().getDate() +
-            "/" +
-            (new Date().getMonth() + 1) +
-            "/" +
-            new Date().getFullYear()}
-        </h2>
+        <h3>{date.slice(0, 10)}</h3>
         <table className="table">
           <thead>
             <tr>

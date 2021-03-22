@@ -1,3 +1,10 @@
+.App {
+  background-color: #d8d5e8;
+}
+
+.navbar {
+  background-image: linear-gradient(to bottom right, #3f1156, #e7d7ef);
+}
 .card-img-top {
   width: 6em;
   height: 10em;
@@ -11,9 +18,13 @@
   border: 3px solid black;
 }
 
-.table.myTable tr {
+.myTable tr {
   border: 2px solid black;
   font-size: 1em;
   font-family: "Rubik", sans-serif;
   font-weight: 700;
 }
+
+/* .myTable {
+  width: 95%;
+} */

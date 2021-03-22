@@ -58,7 +58,7 @@ class Games extends Component {
     const { players } = this.state;
 
     return (
-      <div className="container">
+      <div className="container mt-3">
         <div className="row">
           {players.map((player) => (
             <Players

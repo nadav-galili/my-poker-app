@@ -8,14 +8,13 @@ import { Switch, Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <header>
-        <Navbar />
-      </header>
+      <Navbar />
+
       <main style={{ minheight: 900 }}>
         <Switch>
-          <Route path="/table" exact component={Table} />
           <Route path="/lastgame" component={LastGame} />
-          <Route path="/" exact component={Games} />
+          <Route path="/games" component={Games} />
+          <Route path="/" component={Table} />
         </Switch>
       </main>
     </div>

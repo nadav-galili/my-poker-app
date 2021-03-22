@@ -8,16 +8,24 @@ class Table extends Component {
   };
   async componentDidMount() {
     const { data } = await tableService.getTable();
-
-    this.setState({ table: data });
+    console.log(data);
+    this.setState({ table: data[0] });
   }
 
   render() {
     const { table } = this.state;
 
     return (
-      <div className="container ">
-        <table className="table myTable" border="3px solid black">
+      <div className="container mt-3 ">
+        <h1>
+          {" "}
+          {new Date().getDate() +
+            "/" +
+            (new Date().getMonth() + 1) +
+            "/" +
+            new Date().getFullYear()}
+        </h1>
+        <table className="myTable" border="3px solid black">
           <thead className="bg-primary">
             <tr>
               <td>מקום</td>
