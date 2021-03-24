@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { apiUrl } from "../config/config.json";
 import tableService from "../services/tableService";
+import GamesData from "./gamesData";
 
 class Table extends Component {
   state = {
@@ -8,8 +9,7 @@ class Table extends Component {
   };
   async componentDidMount() {
     const { data } = await tableService.getTable();
-    console.log(data);
-    this.setState({ table: data[0] });
+    this.setState({ table: data[1] });
   }
 
   render() {
@@ -69,6 +69,7 @@ class Table extends Component {
             ))}
           </tbody>
         </table>
+        <GamesData />
       </div>
     );
   }
