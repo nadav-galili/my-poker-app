@@ -62,7 +62,7 @@ class Table extends Component {
                 <td>{player.avg_profit}</td>
                 <td>{player.num_of_games}</td>
                 <td>{player.is_plus}</td>
-                <td>{player.success_percentage}</td>
+                <td>{player.success_percentage}%</td>
                 <td>{player.avg_num_of_pritot}</td>
                 <td>{player.last_game.slice(0, 10)}</td>
               </tr>

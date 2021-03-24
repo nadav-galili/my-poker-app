@@ -10,6 +10,7 @@ class LastGame extends Component {
   async componentDidMount() {
     const { data } = await gameService.getLastGame();
     this.setState({ players: data });
+    console.log(this.state);
     this.setState({ date: data[0].date });
   }
 
@@ -18,13 +19,13 @@ class LastGame extends Component {
     const { date } = this.state;
     return (
       <div className="container ">
-        <h2>Last Game</h2>
+        <h2>משחק אחרון</h2>
         <h3>{date.slice(0, 10)}</h3>
-        <table className="table">
+        <table className="myTable" border="2px solid black">
           <thead>
             <tr>
-              <td>Game Rank</td>
-              <td>Name</td>
+              <td className="p-2">Game Rank</td>
+              <td className="p-2">Name</td>
               <td>img</td>
               <td>Profit</td>
               <td>Pritot Number</td>

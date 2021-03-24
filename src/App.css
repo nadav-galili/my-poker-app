@@ -5,6 +5,14 @@
 .navbar {
   background-image: linear-gradient(to bottom right, #3f1156, #e7d7ef);
 }
+
+.navbar-brand img {
+  border: 2px solid black;
+}
+
+.card {
+  border: 2px solid #3f1156 !important;
+}
 .card-img-top {
   width: 6em;
   height: 10em;
@@ -23,4 +31,12 @@
   font-size: 1em;
   font-family: "Rubik", sans-serif;
   font-weight: 700;
+}
+
+td input {
+  max-width: 30%;
+}
+
+td {
+  padding: 0.5em;
 }

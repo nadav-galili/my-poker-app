@@ -4,12 +4,12 @@ const GameTable = () => {
   return (
     <thead>
       <tr>
-        <td>id</td>
-        <td>name</td>
+        {/* <td>id</td> */}
+        <td>שם</td>
         <td></td>
-        <td>Current cash</td>
-        <td>Cash in hand</td>
-        <td>Profit</td>
+        <td>כמה פרוט</td>
+        <td>כסף ביד</td>
+        <td>רווח</td>
       </tr>
     </thead>
   );

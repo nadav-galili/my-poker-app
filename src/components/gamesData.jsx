@@ -37,7 +37,9 @@ class GamesData extends Component {
                 <td>{player.date.slice(0, 10)}</td>
                 <td>{player.name}</td>
                 <td>{player.cashing}</td>
-                <td>{player.profit}</td>
+                <td className={player.profit > 0 ? "bg-success" : "bg-danger"}>
+                  {player.profit}
+                </td>
               </tr>
             ))}
           </tbody>

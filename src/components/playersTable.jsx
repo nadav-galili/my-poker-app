@@ -12,13 +12,17 @@ class PlayerTable extends Component {
 
     return (
       <tr key={player.id}>
-        <td>{player.selected && player.id}</td>
+        {/* <td>{player.selected && player.id}</td> */}
         <td>{player.selected && player.name}</td>
 
         <td>
           {player.selected && (
-            <button type="button" onClick={() => addCashing(player.id)}>
-              add cashing
+            <button
+              className="btn btn-sm btn-danger"
+              type="button"
+              onClick={() => addCashing(player.id)}
+            >
+              הוסף פריטה
             </button>
           )}
         </td>

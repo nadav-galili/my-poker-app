@@ -29,11 +29,12 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink
-                  className="nav-link active"
-                  aria-current="page"
-                  to="/games"
-                >
+                <NavLink className="nav-link active" aria-current="page" to="/">
+                  Main tables
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="/games">
                   Start a new game
                 </NavLink>
               </li>

@@ -4,11 +4,15 @@ import Navbar from "./components/navbar";
 import LastGame from "./components/lastGame";
 import Table from "./components/table";
 import { Switch, Route } from "react-router-dom";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <header>
+        <ToastContainer />
+        <Navbar />
+      </header>
 
       <main style={{ minheight: 900 }}>
         <Switch>
