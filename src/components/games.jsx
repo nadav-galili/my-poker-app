@@ -17,8 +17,12 @@ class Games extends Component {
 
   async componentDidMount() {
     const { data } = await playersService.getPlayers();
-
+    console.log(data);
     this.setState({ players: data });
+    const currentPlayers = playersService.getCurrentPlayers();
+    currentPlayers
+      ? this.setState({ players: currentPlayers })
+      : console.log(currentPlayers);
   }
 
   selectPlayer(playerId) {
@@ -41,11 +45,24 @@ class Games extends Component {
       if (result.isConfirmed) {
         let { players } = this.state;
         players[playerId - 1].cashing += 50;
-
+        const playersInfo = JSON.stringify(players);
+        localStorage.setItem("playersInfo", playersInfo);
         this.setState({ players });
+
         Swal.fire("נוספה פריטה לשחקן");
       }
     });
+  };
+
+  undoCashing = (playerId) => {
+    let { players } = this.state;
+    if (players[playerId - 1].cashing > 0) {
+      players[playerId - 1].cashing -= 50;
+      Swal.fire("בוטלה הפריטה");
+      const playersInfo = JSON.stringify(players);
+      localStorage.setItem("playersInfo", playersInfo);
+      this.setState({ players });
+    }
   };
 
   onInputChange = (e) => {
@@ -74,7 +91,7 @@ class Games extends Component {
           player.num_of_cashing = player.cashing / 50;
 
           this.setState({ players });
-
+          localStorage.removeItem("playersInfo");
           return gameService.postGames(player);
         });
 
@@ -118,6 +135,9 @@ class Games extends Component {
                 player={player}
                 addCashing={() => {
                   this.addCashing(player.id);
+                }}
+                undoCashing={() => {
+                  this.undoCashing(player.id);
                 }}
                 changeInput={this.onInputChange}
                 getId={this.getId}

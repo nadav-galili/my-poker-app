@@ -8,7 +8,7 @@ class PlayerTable extends Component {
   };
 
   render() {
-    const { player, addCashing } = this.props;
+    const { player, addCashing, undoCashing } = this.props;
 
     return (
       <tr key={player.id}>
@@ -17,13 +17,13 @@ class PlayerTable extends Component {
 
         <td>
           {player.selected && (
-            <button
-              className="btn btn-sm btn-danger"
-              type="button"
-              onClick={() => addCashing(player.id)}
-            >
+            <p className="pt-3">
+              <i
+                className="fas fa-money-bill-wave text-success mr-1"
+                onClick={() => addCashing(player.id)}
+              ></i>
               הוסף פריטה
-            </button>
+            </p>
           )}
         </td>
         <td>{player.selected && player.cashing}</td>
@@ -34,6 +34,15 @@ class PlayerTable extends Component {
           <i>
             <b>{player.cashInHand - player.cashing}</b>
           </i>
+        </td>
+        <td>
+          <p className="pt-3">
+            <i
+              className="fas fa-undo-alt text-danger mr-1"
+              onClick={() => undoCashing(player.id)}
+            ></i>
+            בטל פריטה
+          </p>
         </td>
       </tr>
     );

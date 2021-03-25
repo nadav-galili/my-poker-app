@@ -10,6 +10,7 @@ const GameTable = () => {
         <td>כמה פרוט</td>
         <td>כסף ביד</td>
         <td>רווח</td>
+        <td></td>
       </tr>
     </thead>
   );

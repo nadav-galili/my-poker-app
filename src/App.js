@@ -3,6 +3,7 @@ import Games from "./components/games";
 import Navbar from "./components/navbar";
 import LastGame from "./components/lastGame";
 import Table from "./components/table";
+import Footer from "./components/footer";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,6 +22,9 @@ function App() {
           <Route path="/" component={Table} />
         </Switch>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
