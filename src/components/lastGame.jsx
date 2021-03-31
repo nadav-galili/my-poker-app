@@ -16,6 +16,7 @@ class LastGame extends Component {
 
   render() {
     const { players } = this.state;
+    console.log(players);
     const { date } = this.state;
     return (
       <div className="container ">
@@ -24,11 +25,11 @@ class LastGame extends Component {
         <table className="myTable" border="2px solid black">
           <thead>
             <tr>
-              <td className="p-2">Game Rank</td>
-              <td className="p-2">Name</td>
-              <td>img</td>
-              <td>Profit</td>
-              <td>Pritot Number</td>
+              <td className="p-2">מיקום</td>
+              <td className="p-2">שחקן</td>
+              <td></td>
+              <td>רווח</td>
+              <td>מספר פריטות</td>
             </tr>
           </thead>
           <tbody>

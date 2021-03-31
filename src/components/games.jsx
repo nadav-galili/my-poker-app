@@ -17,7 +17,7 @@ class Games extends Component {
 
   async componentDidMount() {
     const { data } = await playersService.getPlayers();
-    console.log(data);
+
     this.setState({ players: data });
     const currentPlayers = playersService.getCurrentPlayers();
     currentPlayers
@@ -35,7 +35,7 @@ class Games extends Component {
   addCashing = (playerId) => {
     Swal.fire({
       title: "?בטוח לפרוט לו",
-      text: "לא תוכל לבטל",
+      text: "",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -48,7 +48,8 @@ class Games extends Component {
         const playersInfo = JSON.stringify(players);
         localStorage.setItem("playersInfo", playersInfo);
         this.setState({ players });
-
+        const audio = new Audio(process.env.PUBLIC_URL + `audio/cash.mp3`);
+        audio.play();
         Swal.fire("נוספה פריטה לשחקן");
       }
     });
@@ -59,6 +60,8 @@ class Games extends Component {
     if (players[playerId - 1].cashing > 0) {
       players[playerId - 1].cashing -= 50;
       Swal.fire("בוטלה הפריטה");
+      const audio = new Audio(process.env.PUBLIC_URL + `audio/notify.mp3`);
+      audio.play();
       const playersInfo = JSON.stringify(players);
       localStorage.setItem("playersInfo", playersInfo);
       this.setState({ players });
@@ -115,6 +118,15 @@ class Games extends Component {
 
     return (
       <div className="container mt-3">
+        <div className="appSelect">
+          <p>בחר האם המשחק בלייב/אפליקציה</p>
+          <select name="app" id="">
+            <option value="לייב">לייב</option>
+            <option value="לייב">אפליקציה</option>
+            <option value="לייב">אפליקציה לא לטבלה</option>
+          </select>
+        </div>
+
         <div className="row">
           {players.map((player) => (
             <Players
@@ -126,7 +138,10 @@ class Games extends Component {
             />
           ))}
         </div>
-        <table className="myTable mt-3" border="2px solid black">
+        <table
+          className="myTable mt-3 table-responsive"
+          border="2px solid black"
+        >
           <GameTable />
           <tbody>
             {players.map((player) => (

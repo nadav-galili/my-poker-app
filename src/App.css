@@ -14,7 +14,7 @@
   border: 2px solid #3f1156 !important;
 }
 .card-img-top {
-  width: 6em;
+  /* width: 6em; */
   height: 10em;
   /* border-radius: 50%; */
 }
@@ -26,6 +26,9 @@
   border: 3px solid black;
 }
 
+.myTable {
+  overflow: scroll;
+}
 .myTable tr {
   border: 2px solid black;
   font-size: 1em;
@@ -39,4 +42,8 @@ td input {
 
 td {
   padding: 0.5em;
+}
+
+.appSelect {
+  direction: rtl;
 }

@@ -4,7 +4,7 @@ import Navbar from "./components/navbar";
 import LastGame from "./components/lastGame";
 import Table from "./components/table";
 import Footer from "./components/footer";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, HashRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <Navbar />
       </header>
 
-      <main style={{ minheight: 900 }}>
+      <main style={{ minHeight: 900 }}>
         <Switch>
           <Route path="/lastgame" component={LastGame} />
           <Route path="/games" component={Games} />

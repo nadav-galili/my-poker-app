@@ -31,9 +31,11 @@ class GamesData extends Component {
               <td>רווח</td>
             </tr>
           </thead>
+
           <tbody>
             {table.map((player) => (
-              <tr key={player.profit}>
+              // to do - fix key
+              <tr key={player.date + player.name + player.profit}>
                 <td>{player.date.slice(0, 10)}</td>
                 <td>{player.name}</td>
                 <td>{player.cashing}</td>
