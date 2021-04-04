@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, HashRouter } from "react-router-dom";
 
 class Navbar extends Component {
   state = {};
@@ -9,7 +9,7 @@ class Navbar extends Component {
         <div className="container">
           <Link className="navbar-brand" to="/">
             <img
-              src={process.env.PUBLIC_URL + `images/logo.jpg`}
+              src={process.env.PUBLIC_URL + `images/logo-wings.jpeg`}
               alt="logo"
             ></img>
             <br></br>

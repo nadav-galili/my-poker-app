@@ -17,7 +17,6 @@ class Games extends Component {
 
   async componentDidMount() {
     const { data } = await playersService.getPlayers();
-
     this.setState({ players: data });
     const currentPlayers = playersService.getCurrentPlayers();
     currentPlayers
@@ -26,8 +25,9 @@ class Games extends Component {
   }
 
   selectPlayer(playerId) {
+    const push = new Audio(process.env.PUBLIC_URL + `audio/push.mp3`);
+    push.play();
     const { players } = this.state;
-
     players[playerId - 1].selected = !players[playerId - 1].selected;
     this.setState({ players });
   }
@@ -86,13 +86,10 @@ class Games extends Component {
     }).then((result) => {
       if (result.isConfirmed) {
         let players = this.state.players;
-
         players = players.filter((player) => player.selected);
-
         players.map((player) => {
           player.profit = player.cashInHand - player.cashing;
           player.num_of_cashing = player.cashing / 50;
-
           this.setState({ players });
           localStorage.removeItem("playersInfo");
           return gameService.postGames(player);
@@ -118,15 +115,18 @@ class Games extends Component {
 
     return (
       <div className="container mt-3">
-        <div className="appSelect">
-          <p>בחר האם המשחק בלייב/אפליקציה</p>
-          <select name="app" id="">
+        <div className="appSelect col align-self-end text-right">
+          <p className="">בחר האם המשחק בלייב/אפליקציה</p>
+          <select name="app" id="" className="">
             <option value="לייב">לייב</option>
             <option value="לייב">אפליקציה</option>
             <option value="לייב">אפליקציה לא לטבלה</option>
           </select>
         </div>
-
+        <br />
+        <p className="choose col align-self-end text-right ">
+          בחר שחקנים שישתתפו במשחק
+        </p>
         <div className="row">
           {players.map((player) => (
             <Players

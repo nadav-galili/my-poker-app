@@ -9,19 +9,24 @@ class LastGame extends Component {
   };
   async componentDidMount() {
     const { data } = await gameService.getLastGame();
+    console.log(data);
     this.setState({ players: data });
-    console.log(this.state);
     this.setState({ date: data[0].date });
   }
 
   render() {
     const { players } = this.state;
-    console.log(players);
+
     const { date } = this.state;
+    console.log(date);
     return (
       <div className="container ">
-        <h2>משחק אחרון</h2>
-        <h3>{date.slice(0, 10)}</h3>
+        <div className="datelast text-center">
+          <h2>משחק אחרון</h2>
+          <h3>{date.slice(0, 10)}</h3>
+          <h3>{date.slice(-13, -5)}</h3>
+        </div>
+
         <table className="myTable" border="2px solid black">
           <thead>
             <tr>

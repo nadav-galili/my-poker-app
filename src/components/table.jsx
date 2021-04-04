@@ -17,14 +17,22 @@ class Table extends Component {
 
     return (
       <div className="container mt-3 ">
-        <h1>
+        <h1>League Table</h1>
+        <img
+          src={process.env.PUBLIC_URL + `images/logo-cup.jpeg`}
+          className=" logo-cup"
+          alt="logo-cup"
+        />
+
+        <h2>
           {" "}
           {new Date().getDate() +
             "/" +
             (new Date().getMonth() + 1) +
             "/" +
             new Date().getFullYear()}
-        </h1>
+        </h2>
+
         <div className="table-responsive">
           <table className="myTable" border="3px solid black">
             <thead className="bg-primary">
@@ -72,6 +80,7 @@ class Table extends Component {
               ))}
             </tbody>
           </table>
+          <hr />
           <GamesData />
         </div>
       </div>

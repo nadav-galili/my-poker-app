@@ -16,11 +16,11 @@ function App() {
       </header>
 
       <main style={{ minHeight: 900 }}>
-        <Switch>
+        <HashRouter>
           <Route path="/lastgame" component={LastGame} />
           <Route path="/games" component={Games} />
-          <Route path="/" component={Table} />
-        </Switch>
+          <Route exact path="/" component={Table} />
+        </HashRouter>
       </main>
       <footer>
         <Footer />

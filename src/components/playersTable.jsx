@@ -32,17 +32,19 @@ class PlayerTable extends Component {
         </td>
         <td>
           <i>
-            <b>{player.cashInHand - player.cashing}</b>
+            <b>{player.selected && player.cashInHand - player.cashing}</b>
           </i>
         </td>
         <td>
-          <p className="pt-3">
-            <i
-              className="fas fa-undo-alt text-danger mr-1"
-              onClick={() => undoCashing(player.id)}
-            ></i>
-            בטל פריטה
-          </p>
+          {player.selected && (
+            <p className="pt-3">
+              <i
+                className="fas fa-undo-alt text-danger mr-1"
+                onClick={() => undoCashing(player.id)}
+              ></i>
+              בטל פריטה
+            </p>
+          )}
         </td>
       </tr>
     );

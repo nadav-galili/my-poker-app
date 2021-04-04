@@ -3,11 +3,18 @@
 }
 
 .navbar {
-  background-image: linear-gradient(to bottom right, #3f1156, #e7d7ef);
+  background-image: linear-gradient(to bottom right, #4a075e, #e7d7ef);
 }
 
 .navbar-brand img {
   border: 2px solid black;
+  height: 7rem;
+}
+
+.logo-cup {
+  border: 2px solid black;
+  height: 7rem;
+  border-radius: 50%;
 }
 
 .card {
@@ -46,4 +53,12 @@ td {
 
 .appSelect {
   direction: rtl;
+}
+
+.appSelect p {
+  font-weight: 700;
+}
+
+.choose {
+  font-weight: 700;
 }

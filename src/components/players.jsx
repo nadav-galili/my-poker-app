@@ -15,7 +15,7 @@ const Players = ({ player, selectPlayer }) => {
           <button
             type="button"
             onClick={selectPlayer}
-            className="btn btn-primary"
+            className="btn btn-primary align-self-center"
           >
             +Add Player
           </button>
