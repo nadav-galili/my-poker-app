@@ -16,15 +16,14 @@ class LastGame extends Component {
 
   render() {
     const { players } = this.state;
+    let { date } = this.state;
+    let rank = 1;
 
-    const { date } = this.state;
-    console.log(date);
     return (
       <div className="container ">
         <div className="datelast text-center">
           <h2>משחק אחרון</h2>
           <h3>{date.slice(0, 10)}</h3>
-          <h3>{date.slice(-13, -5)}</h3>
         </div>
 
         <table className="myTable" border="2px solid black">
@@ -40,7 +39,7 @@ class LastGame extends Component {
           <tbody>
             {players.map((player) => (
               <tr key={player.name}>
-                <td>{player.rank}</td>
+                <td>{rank++}</td>
                 <td>{player.name}</td>
                 <td>
                   <img

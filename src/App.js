@@ -3,6 +3,7 @@ import Games from "./components/games";
 import Navbar from "./components/navbar";
 import LastGame from "./components/lastGame";
 import Table from "./components/table";
+import About from "./components/about";
 import Footer from "./components/footer";
 import { Switch, Route, HashRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -19,6 +20,7 @@ function App() {
         <HashRouter>
           <Route path="/lastgame" component={LastGame} />
           <Route path="/games" component={Games} />
+          <Route path="/about" component={About} />
           <Route exact path="/" component={Table} />
         </HashRouter>
       </main>

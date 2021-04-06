@@ -2,18 +2,22 @@ import React, { Component } from "react";
 import { apiUrl } from "../config/config.json";
 import tableService from "../services/tableService";
 import GamesData from "./gamesData";
+import { Ripple } from "react-preloaders";
 
 class Table extends Component {
   state = {
     table: [],
+    loading: true,
   };
   async componentDidMount() {
     const { data } = await tableService.getTable();
+    this.setState({ loading: false });
     this.setState({ table: data[1] });
   }
 
   render() {
     const { table } = this.state;
+    let rank = 1;
 
     return (
       <div className="container mt-3 ">
@@ -54,7 +58,7 @@ class Table extends Component {
             <tbody>
               {table.map((player) => (
                 <tr key={player.name}>
-                  <td>{player.rank}</td>
+                  <td>{rank++}</td>
                   <td>{player.name}</td>
                   <td>
                     <img
@@ -83,6 +87,7 @@ class Table extends Component {
           <hr />
           <GamesData />
         </div>
+        <Ripple customLoading={this.loading} />
       </div>
     );
   }

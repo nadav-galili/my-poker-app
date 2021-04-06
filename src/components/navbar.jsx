@@ -43,6 +43,11 @@ class Navbar extends Component {
                   Last Game
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/about">
+                  About
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>
