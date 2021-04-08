@@ -13,6 +13,7 @@ import PlayerTable from "./playersTable";
 class Games extends Component {
   state = {
     players: [],
+    is_app: 0,
   };
 
   async componentDidMount() {
@@ -48,8 +49,8 @@ class Games extends Component {
         const playersInfo = JSON.stringify(players);
         localStorage.setItem("playersInfo", playersInfo);
         this.setState({ players });
-        const audio = new Audio(process.env.PUBLIC_URL + `audio/cash.mp3`);
-        audio.play();
+        const goal = new Audio(process.env.PUBLIC_URL + `audio/goal.mp3`);
+        goal.play();
         Swal.fire("נוספה פריטה לשחקן");
       }
     });
@@ -74,6 +75,11 @@ class Games extends Component {
     this.setState({ players });
   };
 
+  isAppChange = (e) => {
+    console.log(this.state);
+    this.setState({ is_app: e.target.value });
+  };
+
   updateGame = async () => {
     Swal.fire({
       title: "?בטוח נגמר המשחק",
@@ -90,7 +96,9 @@ class Games extends Component {
         players.map((player) => {
           player.profit = player.cashInHand - player.cashing;
           player.num_of_cashing = player.cashing / 50;
+          player.is_app = this.state.is_app;
           this.setState({ players });
+          console.log(players);
           localStorage.removeItem("playersInfo");
           return gameService.postGames(player);
         });
@@ -117,10 +125,16 @@ class Games extends Component {
       <div className="container mt-3">
         <div className="appSelect col align-self-end text-right">
           <p className="">בחר האם המשחק בלייב/אפליקציה</p>
-          <select name="app" id="" className="">
-            <option value="לייב">לייב</option>
-            <option value="לייב">אפליקציה</option>
-            <option value="לייב">אפליקציה לא לטבלה</option>
+          <select
+            defaultValue={this.state.isApp}
+            name="app"
+            id=""
+            className=""
+            onChange={this.isAppChange}
+          >
+            <option value="0">לייב</option>
+            <option value="1">אפליקציה</option>
+            <option value="9">אפליקציה לא לטבלה</option>
           </select>
         </div>
         <br />
@@ -139,7 +153,7 @@ class Games extends Component {
           ))}
         </div>
         <table
-          className="myTable mt-3 table-responsive"
+          className="myTable table-responsive mt-3 "
           border="2px solid black"
         >
           <GameTable />
@@ -159,6 +173,20 @@ class Games extends Component {
               />
             ))}
           </tbody>
+          <tfoot>
+            <tr>
+              <td>סה"כ</td>
+              <td></td>
+              <td>
+                {players.reduce((a, b) => {
+                  return a + b.cashing;
+                }, 0)}
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tfoot>
         </table>
         <button
           type="button"

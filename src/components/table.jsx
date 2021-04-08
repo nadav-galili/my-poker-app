@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import { apiUrl } from "../config/config.json";
 import tableService from "../services/tableService";
 import GamesData from "./gamesData";
-import { Ripple } from "react-preloaders";
+import Loader from "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 class Table extends Component {
   state = {
     table: [],
     loading: true,
   };
+
   async componentDidMount() {
     const { data } = await tableService.getTable();
-    this.setState({ loading: false });
     this.setState({ table: data[1] });
+    this.setState({ loading: false });
   }
 
   render() {
@@ -22,6 +23,7 @@ class Table extends Component {
     return (
       <div className="container mt-3 ">
         <h1>League Table</h1>
+
         <img
           src={process.env.PUBLIC_URL + `images/logo-cup.jpeg`}
           className=" logo-cup"
@@ -37,8 +39,8 @@ class Table extends Component {
             new Date().getFullYear()}
         </h2>
 
-        <div className="table-responsive">
-          <table className="myTable" border="3px solid black">
+        <div className="table table-responsive table-hover">
+          <table className="myTable " border="3px solid black">
             <thead className="bg-primary">
               <tr>
                 <td>מקום</td>
@@ -87,7 +89,6 @@ class Table extends Component {
           <hr />
           <GamesData />
         </div>
-        <Ripple customLoading={this.loading} />
       </div>
     );
   }

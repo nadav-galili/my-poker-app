@@ -17,6 +17,11 @@ class GamesData extends Component {
 
     return (
       <div className="mt-3 ">
+        <img
+          src={process.env.PUBLIC_URL + `/images/logo-fire.jpeg`}
+          alt="logo-fire"
+          className="logo-fire"
+        />
         <p>
           <b>
             <u>פירוט משחקים</u>
