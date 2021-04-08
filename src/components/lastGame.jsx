@@ -9,7 +9,6 @@ class LastGame extends Component {
   };
   async componentDidMount() {
     const { data } = await gameService.getLastGame();
-    console.log(data);
     this.setState({ players: data });
     this.setState({ date: data[0].date });
   }

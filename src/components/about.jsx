@@ -18,6 +18,7 @@ const About = () => {
       <br />
       <a href="https://www.twitch.tv/videos/966912336">
         <u>Sample Video</u>
+        <br />
       </a>
       <img
         src={process.env.PUBLIC_URL + `images/twitch.jpg`}

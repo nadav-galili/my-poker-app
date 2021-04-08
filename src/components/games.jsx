@@ -98,12 +98,11 @@ class Games extends Component {
           player.num_of_cashing = player.cashing / 50;
           player.is_app = this.state.is_app;
           this.setState({ players });
-          console.log(players);
           localStorage.removeItem("playersInfo");
           return gameService.postGames(player);
         });
-
-        this.props.history.replace("/lastgame");
+        // window.location = "#/lastgame";
+        this.props.history.push("/lastgame");
 
         toast.success("GAME OVER", {
           position: "top-left",
@@ -152,6 +151,7 @@ class Games extends Component {
             />
           ))}
         </div>
+
         <table
           className="myTable table-responsive mt-3 "
           border="2px solid black"
