@@ -22,7 +22,9 @@ class Table extends Component {
 
     return (
       <div className="container mt-3 ">
-        <h1>League Table</h1>
+        <h1>
+          <u>League Table</u>
+        </h1>
 
         <img
           src={process.env.PUBLIC_URL + `images/logo-cup.jpeg`}

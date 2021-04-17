@@ -75,3 +75,16 @@ td {
   height: 12em;
   border: 2px solid #4a075e;
 }
+
+.btn-danger {
+  margin-left: 100px;
+}
+.bg-dark {
+  width: 14em;
+  height: 26em;
+}
+.stats {
+  height: 16em;
+  width: 12em;
+  object-fit: cover;
+}
