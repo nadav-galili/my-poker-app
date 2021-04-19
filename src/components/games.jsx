@@ -22,7 +22,7 @@ class Games extends Component {
     const currentPlayers = playersService.getCurrentPlayers();
     currentPlayers
       ? this.setState({ players: currentPlayers })
-      : console.log(currentPlayers);
+      : console.log("No current Game in process");
   }
 
   selectPlayer(playerId) {

@@ -1,27 +1,30 @@
 import React, { Component } from "react";
 import PlayerCard from "./playerCard";
-import tableService from "../services/tableService";
+import statsService from "../services/statsService";
+import http from "../services/httpService";
 
 class Stats extends Component {
   state = {
-    table: [],
+    stats: [],
   };
 
   async componentDidMount() {
-    const { data } = await tableService.getTable();
-    this.setState({ table: data[1] });
-    console.log(this.state);
+    const { data } = await statsService.getStats();
+    if (data.length > 0) this.setState({ stats: data });
   }
+
   render() {
+    const { stats } = this.state;
+    console.log("z", stats);
     return (
       <div className="container">
-        <h1>עמוד בבנייה</h1>
+        <h1>...עמוד בבנייה</h1>
         <h1>
           <u>Player Stats</u>
         </h1>
         <div className="row">
-          <PlayerCard />
-          <PlayerCard />
+          {stats.length > 0 && <PlayerCard stats={stats} />}
+          {/* <PlayerCard /> */}
         </div>
       </div>
     );

@@ -1,10 +1,14 @@
 import React from "react";
 
-const PlayerCard = () => {
+const PlayerCard = ({ stats }) => {
+  if (!stats) {
+    return <h1>loading...</h1>;
+  }
+
   return (
     <div className="card bg-dark text-white m-3">
       <img
-        src={process.env.PUBLIC_URL + "/images/bibs.jpg"}
+        src={process.env.PUBLIC_URL + `/images/${stats[0].name}.jpg`}
         className="card-img stats"
         alt="..."
       />
@@ -12,12 +16,22 @@ const PlayerCard = () => {
         <h5 className="card-title">
           <u>אלוף הרווח הממוצע</u>
         </h5>
-        <p className="card-text">רווח ממוצע עונתי של:</p>
-        <p className="card-text ">Last updated 3 mins ago</p>
-
-        <p className="card-text mt-5">Last updated 3 mins ago</p>
-        <p className="card-text mt-5">Last updated 3 mins ago</p>
-        <p className="card-text">Last updated 3 mins ago</p>
+        <h5 className="card-text text-right p-2">
+          :רווח ממוצע עונתי של
+          {stats[0].avg_profit}
+        </h5>
+        <br />
+        <br />
+        <h5 className="card-text p-3">
+          <ul>
+            <li>
+              2 {stats[1].name} {stats[1].avg_profit}
+            </li>
+            <li>
+              3 {stats[2].name} {stats[2].avg_profit}
+            </li>
+          </ul>
+        </h5>
       </div>
     </div>
   );

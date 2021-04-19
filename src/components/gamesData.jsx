@@ -8,7 +8,6 @@ class GamesData extends Component {
   };
   async componentDidMount() {
     const { data } = await tableService.getTable();
-
     this.setState({ table: data[0] });
   }
 
