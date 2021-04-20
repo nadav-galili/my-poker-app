@@ -23,12 +23,12 @@ class GamesData extends Component {
         />
         <p>
           <b>
-            <u>פירוט משחקים</u>
+            <u>משחקים אחרונים</u>
           </b>
         </p>
         <table className="myTable" border="3px solid black">
           <thead>
-            <tr className="bg-info bg-gradient">
+            <tr style={{ backgroundColor: "#4a075e", color: "white" }}>
               <td>תאריך</td>
               <td>שם</td>
               <td>פריטות</td>

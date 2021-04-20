@@ -28,9 +28,7 @@
   border: 2px solid #3f1156 !important;
 }
 .card-img-top {
-  /* width: 6em; */
   height: 10em;
-  /* border-radius: 50%; */
 }
 
 .lastgame {
@@ -80,11 +78,16 @@ td {
   margin-left: 100px;
 }
 .bg-dark {
-  width: 14em;
+  width: 9.5em;
   height: 18em;
+  text-align: center;
 }
 .stats {
-  height: 12em;
-  width: 12em;
+  height: 11em;
   object-fit: cover;
+}
+
+.all-time-stats img {
+  width: 15em;
+  border: 2px solid #4a075e;
 }

@@ -43,7 +43,7 @@ class Table extends Component {
 
         <div className="table table-responsive table-hover">
           <table className="myTable " border="3px solid black">
-            <thead className="bg-primary">
+            <thead style={{ backgroundColor: "#4a075e", color: "white" }}>
               <tr>
                 <td>מקום</td>
                 <td>שם</td>
