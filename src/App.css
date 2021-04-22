@@ -87,6 +87,9 @@ td {
   object-fit: cover;
 }
 
+.all-time-stats {
+  margin-left: 1em;
+}
 .all-time-stats img {
   width: 15em;
   border: 2px solid #4a075e;

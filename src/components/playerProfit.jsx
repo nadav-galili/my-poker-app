@@ -6,8 +6,8 @@ const PlayerProfit = ({ stats }) => {
       <p>רשימת הרווחים הגדולים</p>
       <ol>
         {stats.map((player) => (
-          <li>
-            {player.name}-{player.profit}
+          <li key={player.date + player.name}>
+            {player.name}-Total:{player.profit}, Date-{player.date.slice(0, 10)}
           </li>
         ))}
       </ol>

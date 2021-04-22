@@ -8,7 +8,7 @@ const playerCashing = ({ stats }) => {
   return (
     <div className="card bg-dark text-white m-3">
       <img
-        src={process.env.PUBLIC_URL + `/images/${stats[0].name}.jpg`}
+        src={process.env.PUBLIC_URL + `/images/${stats[0].name}2.jpg`}
         className="card-img stats"
         alt={`${stats[0].name}`}
       />

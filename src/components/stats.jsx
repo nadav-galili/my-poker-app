@@ -19,7 +19,7 @@ class Stats extends Component {
 
   render() {
     const { stats } = this.state;
-    console.log(stats[4]);
+    console.log(stats[5]);
 
     return (
       <div className="container">
@@ -33,7 +33,7 @@ class Stats extends Component {
           {stats.length > 0 && <PlayerSuccess stats={stats[2]} />}
           {stats.length > 0 && <PlayerCashing stats={stats[3]} />}
         </div>
-        <div className="mx-auto p-5 all-time-stats text-right">
+        <div className=" all-time-stats">
           <h3>
             -סה"כ כסף ששוחק בשולחן
             {stats.length > 0 && <AllCash stats={stats[4]} />}
@@ -43,8 +43,10 @@ class Stats extends Component {
             alt="cash"
           />
         </div>
-        <div className="player-profit ">
-          {stats.length > 0 && <PlayerProfit stats={stats[5]} />}
+        <div className="player-profit m-3">
+          <u>
+            <b>{stats.length > 0 && <PlayerProfit stats={stats[5]} />}</b>
+          </u>
         </div>
       </div>
     );
