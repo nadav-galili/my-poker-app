@@ -26,7 +26,7 @@ class LastGame extends Component {
         </div>
 
         <table className="myTable" border="2px solid black">
-          <thead>
+          <thead style={{ backgroundColor: "#4a075e", color: "white" }}>
             <tr>
               <td className="p-2">מיקום</td>
               <td className="p-2">שחקן</td>
