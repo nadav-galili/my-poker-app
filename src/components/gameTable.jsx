@@ -4,7 +4,6 @@ const GameTable = () => {
   return (
     <thead>
       <tr>
-        {/* <td>id</td> */}
         <td>שם</td>
         <td></td>
         <td>כמה פרוט</td>

@@ -22,7 +22,7 @@ class Games extends Component {
     const currentPlayers = playersService.getCurrentPlayers();
     currentPlayers
       ? this.setState({ players: currentPlayers })
-      : console.log(currentPlayers);
+      : console.log("No current Game in process");
   }
 
   selectPlayer(playerId) {
@@ -71,13 +71,31 @@ class Games extends Component {
 
   onInputChange = (e) => {
     let { players } = this.state;
-    players[e.id - 1].cashInHand = e.cashInHand;
+    players[e.id - 1].cashInHand = parseInt(e.cashInHand);
     this.setState({ players });
+    console.log(players);
   };
 
   isAppChange = (e) => {
-    console.log(this.state);
     this.setState({ is_app: e.target.value });
+  };
+
+  resetGame = () => {
+    Swal.fire({
+      title: "?למחוק משחק ",
+      text: "",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "כן",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let { players } = this.state;
+        localStorage.removeItem("playersInfo");
+        this.setState({ players });
+      }
+    });
   };
 
   updateGame = async () => {
@@ -182,7 +200,11 @@ class Games extends Component {
                   return a + b.cashing;
                 }, 0)}
               </td>
-              <td></td>
+              <td>
+                {players.reduce((a, b) => {
+                  return a + b.cashInHand;
+                }, 0)}
+              </td>
               <td></td>
               <td></td>
             </tr>
@@ -194,6 +216,13 @@ class Games extends Component {
           onClick={this.updateGame}
         >
           Update Results
+        </button>
+        <button
+          type="button"
+          className="btn btn-danger btn-lg mt-3  "
+          onClick={this.resetGame}
+        >
+          Reset Game
         </button>
       </div>
     );
