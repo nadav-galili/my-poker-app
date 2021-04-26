@@ -26,14 +26,14 @@ const playerGameNum = ({ stats }) => {
         </p>
 
         <div className="card-text pt-4 ">
-          <ul>
+          <ol start="2">
             <li>
-              2- {stats[1].name} {stats[1].games}
+              {stats[1].name} {stats[1].games}
             </li>
             <li>
-              3- {stats[2].name} {stats[2].games}
+              {stats[2].name} {stats[2].games}
             </li>
-          </ul>
+          </ol>
         </div>
       </div>
     </div>
