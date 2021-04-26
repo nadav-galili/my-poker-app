@@ -1,13 +1,21 @@
 import React from "react";
 
 const PlayerProfit = ({ stats }) => {
+  stats.forEach((e) => {
+    e.date = new Date(e.date);
+    e.d = e.date.getDate();
+    e.m = e.date.getMonth();
+    e.y = e.date.getFullYear();
+  });
+
   return (
     <div className="mx-auto">
       <p>רשימת הרווחים הגדולים</p>
       <ol>
         {stats.map((player) => (
-          <li key={player.date + player.name}>
-            {player.name}-Total:{player.profit}, Date-{player.date.slice(0, 10)}
+          <li key={player.d + player.m + player.name}>
+            {player.name}-{player.profit}, Date-
+            {player.d + "/" + player.m + "/" + player.y}
           </li>
         ))}
       </ol>

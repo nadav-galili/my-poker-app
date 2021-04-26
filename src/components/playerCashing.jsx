@@ -29,14 +29,14 @@ const playerCashing = ({ stats }) => {
         </p>
 
         <div className="card-text pt-4">
-          <ul>
+          <ol start="2">
             <li>
-              2- {stats[1].name} {stats[1].avg_num_of_pritot}
+              {stats[1].name} {stats[1].avg_num_of_pritot}
             </li>
             <li>
-              3- {stats[2].name} {stats[2].avg_num_of_pritot}
+              {stats[2].name} {stats[2].avg_num_of_pritot}
             </li>
-          </ul>
+          </ol>
         </div>
       </div>
     </div>

@@ -33,14 +33,14 @@ const PlayerSuccess = ({ stats }) => {
         </p>
 
         <div className="card-text text-left ">
-          <ul>
+          <ol start="2">
             <li>
-              2- {stats[1].name} {stats[1].is_plus}
+              {stats[1].name} {stats[1].is_plus}
             </li>
             <li>
-              3-{stats[2].name} {stats[2].is_plus}
+              {stats[2].name} {stats[2].is_plus}
             </li>
-          </ul>
+          </ol>
         </div>
       </div>
     </div>

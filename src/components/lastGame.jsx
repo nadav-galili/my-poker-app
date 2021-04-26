@@ -16,13 +16,21 @@ class LastGame extends Component {
   render() {
     const { players } = this.state;
     let { date } = this.state;
+    let today = new Date(date);
+
     let rank = 1;
 
     return (
       <div className="container ">
         <div className="datelast text-center">
           <h2>משחק אחרון</h2>
-          <h3>{date.slice(0, 10)}</h3>
+          <h3>
+            {today.getDate() +
+              "/" +
+              (today.getMonth() + 1) +
+              "/" +
+              today.getFullYear()}
+          </h3>
         </div>
 
         <table className="myTable" border="2px solid black">

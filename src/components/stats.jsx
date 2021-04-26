@@ -27,12 +27,13 @@ class Stats extends Component {
           <u>Player Stats</u>
         </h1>
 
-        <div className="mx-auto row row-col-6 row-col-md-4 row-col-lg-3 row-col-xl-3">
+        <div className="mx-auto row row-col-6 row-col-md-4 row-col-lg-3 row-col-xl-">
           {stats.length > 0 && <PlayerAvgProfit stats={stats[0]} />}
           {stats.length > 0 && <PlayerGameNum stats={stats[1]} />}
           {stats.length > 0 && <PlayerSuccess stats={stats[2]} />}
           {stats.length > 0 && <PlayerCashing stats={stats[3]} />}
         </div>
+
         <div className=" all-time-stats">
           <h3>
             -סה"כ כסף ששוחק בשולחן

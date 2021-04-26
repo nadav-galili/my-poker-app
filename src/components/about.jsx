@@ -25,10 +25,17 @@ const About = () => {
         alt="twitch channel"
         className="twitch-img "
       ></img>
-      <p className="mt-5">This site was created by Nadav Galili</p>
-      <p>contact me at:</p>
-      <a href="mailto:nadavg1000@gmail.com">nadavg1000@gmail.com</a>
-      <p className="mt-3">All logos on this site created by Dan Ben Israel</p>
+      <div className="font-weight-bold">
+        <p className="mt-5 ">
+          This site was created by <br />
+          Nadav Galili
+        </p>
+        <p>contact me at:</p>
+        <a href="mailto:nadavg1000@gmail.com">nadavg1000@gmail.com</a>
+        <p className="mt-3">
+          All logos on this site created by <br /> Dan Ben Israel
+        </p>
+      </div>
     </div>
   );
 };
