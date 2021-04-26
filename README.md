@@ -2,7 +2,7 @@ Real Time Poker App This app was made for poker players that wants to keep track
 
 you can see players stats , games played , profit etc.
 
-Choose players to participate in the game
+Choose players to participate in the game.
 
 keep track of real live games and see players profits live.
 
