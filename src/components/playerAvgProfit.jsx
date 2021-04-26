@@ -27,14 +27,14 @@ const PlayerAvgProfit = ({ stats }) => {
         </p>
 
         <div className="card-text pt-4 text-left ">
-          <ul>
+          <ol start="2">
             <li>
-              2- {stats[1].name} {stats[1].avg_profit}
+              {stats[1].name} {stats[1].avg_profit}
             </li>
             <li>
-              3-{stats[2].name} {stats[2].avg_profit}
+              {stats[2].name} {stats[2].avg_profit}
             </li>
-          </ul>
+          </ol>
         </div>
       </div>
     </div>
